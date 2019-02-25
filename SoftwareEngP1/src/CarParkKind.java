@@ -1,0 +1,4 @@
+
+public enum CarParkKind {
+	STUDENT,STAFF,VISITOR,MANAGEMENT
+}
