@@ -22,6 +22,7 @@ public class MahonIanTestTask3
 		NormalPeriod.add(nPeriod);
 		
 		CarParkKind kind= CarParkKind.STAFF ;
+		
 		BigDecimal nRate = new BigDecimal(0) ;
 		BigDecimal rRate = new BigDecimal(0);
 		
@@ -88,11 +89,11 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0.5);
 		
-		BigDecimal ExpectedResult = new BigDecimal(6);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)) , ExpectedResult);
 	}
 	@Test
 	public void NormalDecimal() 
@@ -157,11 +158,11 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0.5);
 		
-		BigDecimal ExpectedResult = new BigDecimal(6);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.newCalculate(rPeriod,nPeriod) , ExpectedResult);
 		}
 	@Test
 	public void DecimalNormalWholeReduced() 
@@ -176,7 +177,7 @@ public class MahonIanTestTask3
 		ReducedPeriod.add(rPeriod); 
 		NormalPeriod.add(nPeriod);
 		
-		CarParkKind kind= CarParkKind.VISITOR ;
+		CarParkKind kind= CarParkKind.MANAGEMENT ;
 		BigDecimal nRate = new BigDecimal(1.5) ;
 		BigDecimal rRate = new BigDecimal(1);
 		
@@ -239,7 +240,7 @@ public class MahonIanTestTask3
 		ReducedPeriod.add(rPeriod); 
 		NormalPeriod.add(nPeriod);
 		
-		CarParkKind kind= CarParkKind.VISITOR ;
+		CarParkKind kind= CarParkKind.STAFF ;
 		BigDecimal nRate = new BigDecimal(1);
 		BigDecimal rRate = new BigDecimal(0);
 		
@@ -270,13 +271,13 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0);
 		
-		BigDecimal ExpectedResult = new BigDecimal(1);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod1).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
-		assertEquals(TestRate.calculate(rPeriod2).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
-		assertEquals(TestRate.calculate(rPeriod3).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.calculate(rPeriod1).add(TestRate.calculate(nPeriod)) , ExpectedResult);
+		assertEquals(TestRate.calculate(rPeriod2).add(TestRate.calculate(nPeriod)) , ExpectedResult);
+		assertEquals(TestRate.calculate(rPeriod3).add(TestRate.calculate(nPeriod)) , ExpectedResult);
 		
 	}
 	@Test
@@ -300,13 +301,13 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0);
 		
-		BigDecimal ExpectedResult = new BigDecimal(1);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod1)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod2)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod3)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.newCalculate(rPeriod, nPeriod1) , ExpectedResult);
+		assertEquals(TestRate.newCalculate(rPeriod, nPeriod2) , ExpectedResult);
+		assertEquals(TestRate.newCalculate(rPeriod, nPeriod3) , ExpectedResult);
 		
 	}
 	@Test
@@ -330,7 +331,7 @@ public class MahonIanTestTask3
 		NormalPeriod.add(nPeriod2);
 		NormalPeriod.add(nPeriod3);
 		
-		CarParkKind kind= CarParkKind.VISITOR  ;
+		CarParkKind kind= CarParkKind.STAFF  ;
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0);
 		
@@ -338,9 +339,9 @@ public class MahonIanTestTask3
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod1).add(TestRate.calculate(nPeriod1)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
-		assertEquals(TestRate.calculate(rPeriod2).add(TestRate.calculate(nPeriod2)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
-		assertEquals(TestRate.calculate(rPeriod3).add(TestRate.calculate(nPeriod3)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.calculate(rPeriod1).add(TestRate.calculate(nPeriod1)) , ExpectedResult);
+		assertEquals(TestRate.calculate(rPeriod2).add(TestRate.calculate(nPeriod2)) , ExpectedResult);
+		assertEquals(TestRate.calculate(rPeriod3).add(TestRate.calculate(nPeriod3)) , ExpectedResult);
 		
 	}
 	@Test
@@ -519,7 +520,7 @@ public class MahonIanTestTask3
 			}
 	}
 	@Test
-	public void RateVisitor() 
+	public void RateVisitor1() 
 	{
 		Period rPeriod,nPeriod ;
 		rPeriod = new Period(4,8) ;
@@ -540,8 +541,33 @@ public class MahonIanTestTask3
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)) , ExpectedResult);
 	}
+	@Test
+	public void RateVisitor2() 
+	{
+		Period rPeriod,nPeriod ;
+		rPeriod = new Period(4,8) ;
+		nPeriod = new Period(8,12) ;
+		
+		ArrayList<Period> ReducedPeriod = new ArrayList<Period>();
+		ArrayList<Period> NormalPeriod = new ArrayList<Period>();
+		
+		ReducedPeriod.add(rPeriod); 
+		NormalPeriod.add(nPeriod);
+		
+		CarParkKind kind= CarParkKind.VISITOR ;
+		BigDecimal nRate = new BigDecimal(2);
+		BigDecimal rRate = new BigDecimal(0);
+		
+		//FIRST 8 IS FREE THEN 50% OFF
+		BigDecimal ExpectedResult = new BigDecimal(0);
+		
+		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
+		
+		assertEquals(TestRate.newCalculate(rPeriod,nPeriod) , ExpectedResult);
+	}
+	@Test
 	public void RateStudent() 
 	{
 		Period rPeriod,nPeriod ;
@@ -563,8 +589,33 @@ public class MahonIanTestTask3
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros(), ExpectedResult);
 	}
+	@Test
+	public void RateStudent2() 
+	{
+		Period rPeriod,nPeriod ;
+		rPeriod = new Period(4,8) ;
+		nPeriod = new Period(8,12) ;
+		
+		ArrayList<Period> ReducedPeriod = new ArrayList<Period>();
+		ArrayList<Period> NormalPeriod = new ArrayList<Period>();
+		
+		ReducedPeriod.add(rPeriod); 
+		NormalPeriod.add(nPeriod);
+		
+		CarParkKind kind= CarParkKind.STUDENT ;
+		BigDecimal nRate = new BigDecimal(4);
+		BigDecimal rRate = new BigDecimal(0);
+		
+		// 25% OFF COSTS OVER 5.50
+		BigDecimal ExpectedResult = new BigDecimal(12);
+		
+		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
+		
+		assertEquals(TestRate.newCalculate(rPeriod,nPeriod).stripTrailingZeros(), ExpectedResult);
+	}
+	@Test
 	public void RateStaff() 
 	{
 		Period rPeriod,nPeriod ;
@@ -586,8 +637,33 @@ public class MahonIanTestTask3
 		
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)) , ExpectedResult);
 	}
+	@Test
+	public void RateStaffnew1() 
+	{
+		Period rPeriod,nPeriod ;
+		rPeriod = new Period(4,8) ;
+		nPeriod = new Period(8,12) ;
+		
+		ArrayList<Period> ReducedPeriod = new ArrayList<Period>();
+		ArrayList<Period> NormalPeriod = new ArrayList<Period>();
+		
+		ReducedPeriod.add(rPeriod); 
+		NormalPeriod.add(nPeriod);
+		
+		CarParkKind kind= CarParkKind.STAFF ;
+		BigDecimal nRate = new BigDecimal(5);
+		BigDecimal rRate = new BigDecimal(0);
+		
+		//COST SHOULD BE 20 BUT MAX FOR STAFF IS 16
+		BigDecimal ExpectedResult = new BigDecimal(16);
+		
+		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
+		
+		assertEquals(TestRate.newCalculate(rPeriod, nPeriod) , ExpectedResult);
+	}
+	@Test
 	public void RateManagement() 
 	{
 		Period rPeriod,nPeriod ;
@@ -610,6 +686,10 @@ public class MahonIanTestTask3
 				
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
 		
-		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)).stripTrailingZeros() , ExpectedResult.stripTrailingZeros());
+		//System.out.print(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)));
+		//System.out.print(TestRate.calculate(rPeriod));
+		//System.out.print(TestRate.calculate(nPeriod));
+		
+		assertEquals(TestRate.newCalculate(rPeriod, nPeriod) , ExpectedResult);
 	}
 }
