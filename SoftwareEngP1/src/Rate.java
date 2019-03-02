@@ -1,3 +1,4 @@
+package cm;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +91,107 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+        
+        BigDecimal NormalRate = this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours));
+        BigDecimal ReducedRate = this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours));
+        
+        
+        if(kind == CarParkKind.STAFF)
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(16)) >= 0)	{
+						return new BigDecimal(16);
+					}
+				else	{
+					return NormalRate.add(ReducedRate);
+					}
+        }
+        else if(kind == CarParkKind.STUDENT)
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(5.50)) >= 0)
+					{
+		        	return NormalRate.add(ReducedRate).multiply(new BigDecimal(0.75));
+					}
+				else
+					{
+						return NormalRate.add(ReducedRate);
+					}
+        }
+        else if(kind == CarParkKind.VISITOR)
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(8)) > 0)
+					{
+		        	return NormalRate.add(ReducedRate).subtract(new BigDecimal(8)).divide(new BigDecimal(2));
+					}
+				else
+					{
+						return new BigDecimal(0);
+					}
+        }
+        else
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(3)) > 0)
+					{
+		        	return NormalRate.add(ReducedRate);
+					}
+				else
+					{
+						return new BigDecimal(3);
+					}
+        }
+    }
+    
+    public BigDecimal newCalculate(Period normalPeriod, Period reducedPeriod) {
+        int normalRateHours = normalPeriod.occurences(normal);
+        int reducedRateHours = reducedPeriod.occurences(reduced);
+        
+        BigDecimal NormalRate = this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours));
+        BigDecimal ReducedRate = this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours));
+        
+        Double Value = NormalRate.add(ReducedRate).doubleValue();
+        
+        if(kind == CarParkKind.STAFF)
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(16)) > 0)	{
+						return new BigDecimal(16);
+					}
+				else	{
+					return NormalRate.add(ReducedRate);
+					}
+        }
+        else if(kind == CarParkKind.STUDENT)
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(5.50)) >= 0)
+					{
+		        	return NormalRate.add(ReducedRate).multiply(new BigDecimal(0.75));
+					}
+				else
+					{
+						return NormalRate.add(ReducedRate);
+					}
+        }
+        else if(kind == CarParkKind.VISITOR)
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(8)) > 0)
+					{
+		        	return NormalRate.add(ReducedRate).subtract(new BigDecimal(8)).divide(new BigDecimal(2));
+					}
+				else
+					{
+						return new BigDecimal(0);
+					}
+        }
+        else
+        {
+		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(3)) > 0)
+					{
+		        	return NormalRate.add(ReducedRate);
+					}
+				else
+					{
+						return new BigDecimal(3);
+					}
+        }
+        
     }
 
 }
