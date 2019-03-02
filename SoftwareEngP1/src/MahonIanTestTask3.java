@@ -426,7 +426,7 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0);
 		
-		BigDecimal ExpectedResult = new BigDecimal(1);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		
 		
@@ -454,7 +454,7 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = new BigDecimal(0);
 		
-		BigDecimal ExpectedResult = new BigDecimal(1);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		
 		
@@ -482,7 +482,7 @@ public class MahonIanTestTask3
 		BigDecimal nRate = new BigDecimal(1) ;
 		BigDecimal rRate = null;
 		
-		BigDecimal ExpectedResult = new BigDecimal(1);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		
 		
@@ -510,7 +510,7 @@ public class MahonIanTestTask3
 		BigDecimal nRate = null;
 		BigDecimal rRate = new BigDecimal(0);
 		
-		BigDecimal ExpectedResult = new BigDecimal(1);
+		BigDecimal ExpectedResult = new BigDecimal(0);
 		
 		
 		
