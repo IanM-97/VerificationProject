@@ -615,13 +615,9 @@ public class MahonIanTestTask3
 		
 		//DUE TO TAKING THE TWO PERIODS SEPERATELY THIS WILL BE 6
 		//MINIMUM PAYABLE IS 3
-		BigDecimal ExpectedResult = new BigDecimal(6);
+		BigDecimal ExpectedResult = new BigDecimal(3);
 				
 		Rate TestRate = new Rate(kind,nRate,rRate,NormalPeriod,ReducedPeriod);
-		
-		//System.out.print(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)));
-		//System.out.print(TestRate.calculate(rPeriod));
-		//System.out.print(TestRate.calculate(nPeriod));
 		
 		assertEquals(TestRate.calculate(rPeriod).add(TestRate.calculate(nPeriod)) , ExpectedResult);
 	}

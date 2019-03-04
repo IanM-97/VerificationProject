@@ -147,8 +147,6 @@ public class Rate {
         BigDecimal NormalRate = this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours));
         BigDecimal ReducedRate = this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours));
         
-        Double Value = NormalRate.add(ReducedRate).doubleValue();
-        
         if(kind == CarParkKind.STAFF)
         {
 		        if(NormalRate.add(ReducedRate).compareTo(new BigDecimal(16)) > 0)	{
